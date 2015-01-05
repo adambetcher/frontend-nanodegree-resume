@@ -241,3 +241,13 @@ Uncomment the code below when you're ready to implement a Google Map!
   // Make sure the map bounds get updated on page resize
 //  map.fitBounds(mapBounds);
 //});
+
+//Adam's combine an object into a string function
+function objectToString(o) {
+  var out = '';
+  for (var p in o) {
+    out += o[p];
+  }
+  return out;
+}
+

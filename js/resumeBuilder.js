@@ -6,7 +6,7 @@ var myPictureURL = HTMLbioPic.replace("%data%", "http://www.theregularguys.biz/i
 var myWelcomeMessage = HTMLWelcomeMsg.replace("%data%", "Welcome to my resume!");
 var mySkills = [
 		HTMLskills.replace("%data%", "Software Development")
-		, HTMLskills.replace("%data%", "Busienss Developship")
+		, HTMLskills.replace("%data%", "Business Development")
 		, HTMLskills.replace("%data%", "Software Architecture")
 		, HTMLskills.replace("%data%", "C#")
 		, HTMLskills.replace("%data%", "MVC.Net")
@@ -14,16 +14,29 @@ var mySkills = [
 
 var bio = {
 	name : myName
-	,role : myRole
-	,contactInfo : {
+	, role : myRole
+	, contactInfo : {
 		email : myEmail
 		, mobile : myMobile
 	}
-	,pictureURL : myPictureURL
-	,welcomeMessage : myWelcomeMessage
-	,skills : mySkills
+	, pictureURL : myPictureURL
+	, welcomeMessage : myWelcomeMessage
+	, skills : mySkills
 };
 
+var work = {
+	position: HTMLworkTitle.replace("%data%", "Architect")
+	, employer: HTMLworkEmployer.replace("%data%", "Boeing")
+	, yearsWorked: HTMLworkDates.replace("%data%", 25)
+	, city: HTMLworkLocation.replace("%data%", "Seattle")
+};
+
+var myEducation = {};
+	myEducation["schoolName"] = HTMLschoolName.replace("%data%", "NYIT");
+	myEducation["degree"] = HTMLschoolDegree.replace("%data%", "MBA");
+	myEducation["major"] = HTMLschoolMajor.replace("%data%", "Marketing, Finance");
+	myEducation["years"] = HTMLschoolDates.replace("%data%", "2005-2006");
+	myEducation["city"] = HTMLschoolLocation.replace("%data%", "New York");
 
 $("#main").prepend(bio.role);
 $("#main").prepend(bio.name);
@@ -33,4 +46,10 @@ $("#main").append(bio.pictureURL);
 $("#main").append(bio.welcomeMessage);
 $("#main").append(HTMLskillsStart);
 $("#skillsH3").append(bio.skills);
+$("#workExperience").append(HTMLworkStart);
+$(".work-entry").append(work.employer + work["position"]);
+$(".work-entry").append(work.yearsWorked);
+$(".work-entry").append(work.city);
+$("#education").append(HTMLschoolStart);
+$(".education-entry").append(objectToString(myEducation));
 
