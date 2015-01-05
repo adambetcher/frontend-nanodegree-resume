@@ -31,12 +31,24 @@ var work = {
 	, city: HTMLworkLocation.replace("%data%", "Seattle")
 };
 
-var myEducation = {};
-	myEducation["schoolName"] = HTMLschoolName.replace("%data%", "NYIT");
-	myEducation["degree"] = HTMLschoolDegree.replace("%data%", "MBA");
-	myEducation["major"] = HTMLschoolMajor.replace("%data%", "Marketing, Finance");
-	myEducation["years"] = HTMLschoolDates.replace("%data%", "2005-2006");
-	myEducation["city"] = HTMLschoolLocation.replace("%data%", "New York");
+var myEducation = {
+	"schools" : [
+	  {
+		"schoolName"  : "NYIT"
+		, "degree" : "MBA"
+		, "major" : ["Marketing", "Finance"]
+		, "years" : "2005-2006"
+		, "city": "New York"
+	  }
+	  , {
+		"schoolName"  : "University of Phoenix"
+		, "degree" : "BS"
+		, "major" : "eBusiness"
+		, "years" : "2001-2004"
+		, "city": "Phoenix"
+	  }
+	]
+}
 
 $("#main").prepend(bio.role);
 $("#main").prepend(bio.name);
