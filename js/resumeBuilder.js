@@ -80,3 +80,11 @@ var education = {
 	]
 }
 
+if(bio.skills.length > 0) {
+	$("#header").append(HTMLskillsStart);
+
+	for (i = 0; i < bio.skills.length; ++i) {
+		$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
+	}
+}
+
