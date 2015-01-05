@@ -98,12 +98,10 @@ function displayWork() {
 		displayJobDates(work.jobs[job].dates);
 		displayJobDescription(work.jobs[job].description);
 	}
-
 }
 
 function displayNewJobSection() {
 	$("#workExperience").append(HTMLworkStart);
-
 }
 
 function displayJobEmployeerTitle(employer, title) {
@@ -120,11 +118,18 @@ function displayJobLocation(location) {
 function displayJobDates(dates) {
 	var formattedJobDates = HTMLworkDates.replace("%data%", dates);
 	$(".work-entry:last").append(formattedJobDates);
-
 }
 
 function displayJobDescription(description) {
 	var formattedJobDescription = HTMLworkDescription.replace("%data%", description);
 	$(".work-entry:last").append(formattedJobDescription);
 }
+
+$(document).click(function(loc) {
+  // your code goes here
+  var x = loc.pageX;
+  var y = loc.pageY;
+
+  logClicks(x,y);
+});
 
