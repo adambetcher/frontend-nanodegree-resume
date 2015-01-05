@@ -92,26 +92,39 @@ displayWork();
 
 function displayWork() {
 	for (job in work.jobs) {
-		//Display a new section for job
-		$("#workExperience").append(HTMLworkStart);
-
-		//Display Employer and Title
-		var formattedJobEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-		var formattedJobTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-		$(".work-entry:last").append(formattedJobEmployer + formattedJobTitle);
-
-		//Display work location
-		var formattedJobLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-		$(".work-entry:last").append(formattedJobLocation);
-
-		//Display work dates
-		var formattedJobDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-		$(".work-entry:last").append(formattedJobDates);
-		
-		//Display work description
-		var formattedJobDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-		$(".work-entry:last").append(formattedJobDescription);
+		displayNewJobSection();
+		displayJobEmployeerTitle(work.jobs[job].employer, work.jobs[job].title);
+		displayJobLocation(work.jobs[job].location);
+		displayJobDates(work.jobs[job].dates);
+		displayJobDescription(work.jobs[job].description);
 	}
 
+}
+
+function displayNewJobSection() {
+	$("#workExperience").append(HTMLworkStart);
+
+}
+
+function displayJobEmployeerTitle(employer, title) {
+	var formattedJobEmployer = HTMLworkEmployer.replace("%data%", employer);
+	var formattedJobTitle = HTMLworkTitle.replace("%data%", title);
+	$(".work-entry:last").append(formattedJobEmployer + formattedJobTitle);
+}
+
+function displayJobLocation(location) {
+	var formattedJobLocation = HTMLworkLocation.replace("%data%", location);
+	$(".work-entry:last").append(formattedJobLocation);
+}
+
+function displayJobDates(dates) {
+	var formattedJobDates = HTMLworkDates.replace("%data%", dates);
+	$(".work-entry:last").append(formattedJobDates);
+
+}
+
+function displayJobDescription(description) {
+	var formattedJobDescription = HTMLworkDescription.replace("%data%", description);
+	$(".work-entry:last").append(formattedJobDescription);
 }
 
