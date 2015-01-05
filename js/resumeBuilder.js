@@ -80,17 +80,10 @@ var education = {
 	]
 }
 
-if(bio.skills.length > 0) {
-	$("#header").append(HTMLskillsStart);
+displayBio(bio);
+displayWork(work);
 
-	for (i = 0; i < bio.skills.length; ++i) {
-		$("#skills").append(HTMLskills.replace("%data%", bio.skills[i]));
-	}
-}
-
-displayWork();
-
-function displayWork() {
+function displayWork(work) {
 	for (job in work.jobs) {
 		displayNewJobSection();
 		displayJobEmployeerTitle(work.jobs[job].employer, work.jobs[job].title);
@@ -132,4 +125,52 @@ $(document).click(function(loc) {
 
   logClicks(x,y);
 });
+
+function displayBio(bio) {
+	displayNameRole(bio.name, bio.role);
+	displayWelcomeMessage(bio.welcomeMessage);
+	displayContacts(bio.contacts);
+	displaySkills(bio.skills);	
+	displayPicture(bio.pictureURL);
+}
+
+function displayNameRole(name, role) {
+	$("#main").prepend(HTMLheaderRole.replace("%data%", role));
+	$("#main").prepend(HTMLheaderName.replace("%data%", name));
+}
+
+function displayWelcomeMessage(welcomeMessage) {
+	$("#main").prepend(HTMLWelcomeMsg.replace("%data%", welcomeMessage));
+
+}
+
+function displayContacts(contacts) {
+	//$("#main").prepend(HTMLWelcomeMsg.replace("%data%", welcomeMessage));
+}
+
+function displaySkills(skills) {
+	if(skills.length > 0) {
+		$("#header").append(HTMLskillsStart);
+
+		for (i = 0; i < skills.length; ++i) {
+			$("#skills").append(HTMLskills.replace("%data%", skills[i]));
+		}
+	}
+
+}
+
+function displayPicture(pictureURL) {
+	$("#main").prepend(HTMLbioPic.replace("%data%", pictureURL));
+}
+
+
+$("#main").append(internationalizeButton);
+
+function inName(name) {
+	var names = name.split(" ");
+	var capsLastName = names.pop().toUpperCase();
+	names.push(capsLastName);
+
+	return names.join(" ");
+}
 
