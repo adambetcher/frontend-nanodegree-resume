@@ -88,3 +88,11 @@ if(bio.skills.length > 0) {
 	}
 }
 
+for (job in work.jobs) {
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedJobTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+
+	$("#workExperience").append(HTMLworkStart);
+	$(".work-entry:last").append(formattedEmployer + formattedJobTitle);
+}
+
