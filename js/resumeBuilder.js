@@ -1,37 +1,67 @@
-var myName = HTMLheaderName.replace("%data%", "Adam J Betcher");
-var myRole = HTMLheaderRole.replace("%data%", "Software Architect");
-var myEmail = HTMLemail.replace("%data%", "adambetcher@theregularguys.biz");
-var myMobile = HTMLmobile.replace("%data%", "555-666-7777");
-var myPictureURL = HTMLbioPic.replace("%data%", "http://www.theregularguys.biz/images/Adam.jpg");
-var myWelcomeMessage = HTMLWelcomeMsg.replace("%data%", "Welcome to my resume!");
-var mySkills = [
-		HTMLskills.replace("%data%", "Software Development")
-		, HTMLskills.replace("%data%", "Business Development")
-		, HTMLskills.replace("%data%", "Software Architecture")
-		, HTMLskills.replace("%data%", "C#")
-		, HTMLskills.replace("%data%", "MVC.Net")
-	];
+var work = 
+{
+    "jobs": [
+        {
+            "employer": "Boeing",
+            "title": "Architect",
+            "location": "Seattle",
+            "dates": "2010 - present",
+            "Description": "Define and ensure software quality"
+        },
+        {
+            "employer": "Boeing",
+            "title": "Scrum Master",
+            "location": "Seattle",
+            "dates": "2005 - 2009",
+            "Description": "Define and ensure software production"
+        }
+    ]
+};
+
+var projects =
+{
+	"projects" : [
+	  {
+		"title" : "Big Old Cert Software",
+		"dates" : "2005 - 2012",
+		"description" : "manage airplane certification tasks",
+		"images" : ["http://lorempixel.com/400/200/sports/1", "http://lorempixel.com/400/200/sports", "http://lorempixel.com/400/200"]
+	  },
+	  {
+		"title" : "People Cert Training",
+		"dates" : "2013",
+		"description" : "manage certifications",
+		"images" : ["http://lorempixel.com/400/200/sports/1", "http://lorempixel.com/400/200/sports", "http://lorempixel.com/400/200"]
+	  },
+	  {
+		"title" : "Big task manager",
+		"dates" : "2014-2015",
+		"description" : "Manage findings",
+		"images" : ["http://lorempixel.com/400/200/sports/1", "http://lorempixel.com/400/200/sports", "http://lorempixel.com/400/200"]
+	  }	
+	]
+};
 
 var bio = {
-	name : myName
-	, role : myRole
-	, contactInfo : {
-		email : myEmail
-		, mobile : myMobile
-	}
-	, pictureURL : myPictureURL
-	, welcomeMessage : myWelcomeMessage
-	, skills : mySkills
+    "name": "Adam J Betcher",
+    "role": "Software Architect",
+    "welcomeMessage": "Welcome to my resume!",
+    "contacts": {
+        "email": "adambetcher@theregularguys.biz",
+        "mobile": "123-456-7890",
+        "github": "adambetcher"
+    },
+    "skills": [
+        "Software Development",
+        "Business Development",
+        "Software Architecture",
+        "C#",
+        "MVC.Net"
+    ],
+    "pictureURL": "http://www.theregularguys.biz/images/Adam.jpg"
 };
 
-var work = {
-	position: HTMLworkTitle.replace("%data%", "Architect")
-	, employer: HTMLworkEmployer.replace("%data%", "Boeing")
-	, yearsWorked: HTMLworkDates.replace("%data%", 25)
-	, city: HTMLworkLocation.replace("%data%", "Seattle")
-};
-
-var myEducation = {
+var education = {
 	"schools" : [
 	  {
 		"schoolName"  : "NYIT"
@@ -49,19 +79,4 @@ var myEducation = {
 	  }
 	]
 }
-
-$("#main").prepend(bio.role);
-$("#main").prepend(bio.name);
-$("#main").append(bio.contactInfo.myEmail);
-$("#main").append(bio.contactInfo.myMobile);
-$("#main").append(bio.pictureURL);
-$("#main").append(bio.welcomeMessage);
-$("#main").append(HTMLskillsStart);
-$("#skillsH3").append(bio.skills);
-$("#workExperience").append(HTMLworkStart);
-$(".work-entry").append(work.employer + work["position"]);
-$(".work-entry").append(work.yearsWorked);
-$(".work-entry").append(work.city);
-$("#education").append(HTMLschoolStart);
-$(".education-entry").append(objectToString(myEducation));
 
