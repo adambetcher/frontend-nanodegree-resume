@@ -6,14 +6,14 @@ var work =
             "title": "Architect",
             "location": "Seattle",
             "dates": "2010 - present",
-            "Description": "Define and ensure software quality"
+            "description": "Define and ensure software quality"
         },
         {
             "employer": "Boeing",
             "title": "Scrum Master",
             "location": "Seattle",
             "dates": "2005 - 2009",
-            "Description": "Define and ensure software production"
+            "description": "Define and ensure software production"
         }
     ]
 };
@@ -89,10 +89,16 @@ if(bio.skills.length > 0) {
 }
 
 for (job in work.jobs) {
-	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedJobEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 	var formattedJobTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var formattedJobLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+	var formattedJobDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+	var formattedJobDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 
 	$("#workExperience").append(HTMLworkStart);
-	$(".work-entry:last").append(formattedEmployer + formattedJobTitle);
+	$(".work-entry:last").append(formattedJobEmployer + formattedJobTitle);
+	$(".work-entry:last").append(formattedJobLocation);
+	$(".work-entry:last").append(formattedJobDates);
+	$(".work-entry:last").append(formattedJobDescription);
 }
 
