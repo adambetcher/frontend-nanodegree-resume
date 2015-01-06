@@ -39,7 +39,19 @@ var projects =
 		"description" : "Manage findings",
 		"images" : ["http://lorempixel.com/400/200/sports/1", "http://lorempixel.com/400/200/sports", "http://lorempixel.com/400/200"]
 	  }	
-	]
+	],
+	"display" : function() {
+		for (var project in this.projects) {
+			var proj = this.projects[project];
+			$("#projects").append(HTMLprojectStart);
+			$(".project-entry:last").append(HTMLprojectTitle.replace("%data%", proj.title));
+			$(".project-entry:last").append(HTMLprojectDates.replace("%data%", proj.dates));
+			$(".project-entry:last").append(HTMLprojectDescription.replace("%data%", proj.description));
+			for(image in proj.images) {
+				$(".project-entry:last").append(HTMLprojectImage.replace("%data%", proj.images[image]));
+			}
+		}
+	}
 };
 
 var bio = {
@@ -82,6 +94,7 @@ var education = {
 
 displayBio(bio);
 displayWork(work);
+projects.display();
 
 function displayWork(work) {
 	for (job in work.jobs) {
