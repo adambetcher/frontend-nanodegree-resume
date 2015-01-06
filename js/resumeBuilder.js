@@ -4,14 +4,14 @@ var work =
         {
             "employer": "Boeing",
             "title": "Architect",
-            "location": "Seattle",
+            "location": "Seattle, WA",
             "dates": "2010 - present",
             "description": "Define and ensure software quality"
         },
         {
             "employer": "Boeing",
             "title": "Scrum Master",
-            "location": "Seattle",
+            "location": "Seattle, WA",
             "dates": "2005 - 2009",
             "description": "Define and ensure software production"
         }
@@ -61,7 +61,8 @@ var bio = {
     "contacts": {
         "email": "adambetcher@theregularguys.biz",
         "mobile": "123-456-7890",
-        "github": "adambetcher"
+        "github": "adambetcher",
+        "location" : "Bellevue, WA"
     },
     "skills": [
         "Software Development",
@@ -80,14 +81,14 @@ var education = {
 		, "degree" : "MBA"
 		, "major" : ["Marketing", "Finance"]
 		, "years" : "2005-2006"
-		, "city": "New York"
+		, "location": "New York, NY"
 	  }
 	  , {
 		"schoolName"  : "University of Phoenix"
 		, "degree" : "BS"
 		, "major" : "eBusiness"
 		, "years" : "2001-2004"
-		, "city": "Phoenix"
+		, "location": "Phoenix, AZ"
 	  }
 	]
 }
@@ -187,3 +188,4 @@ function inName(name) {
 	return names.join(" ");
 }
 
+$("#mapDiv").append(googleMap);
