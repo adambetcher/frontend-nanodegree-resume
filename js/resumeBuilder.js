@@ -15,7 +15,43 @@ var work =
             "dates": "2005 - 2009",
             "description": "Define and ensure software production"
         }
-    ]
+    ],
+    display : function (work) {
+		for (job in this.jobs) {
+			thisJob = this.jobs[job];
+			this.displayNewJobSection();
+			this.displayJobEmployeerTitle(thisJob.employer, thisJob.title);
+			this.displayJobLocation(thisJob.location);
+			this.displayJobDates(thisJob.dates);
+			this.displayJobDescription(thisJob.description);
+		}
+	},
+
+	displayNewJobSection : function () {
+		$("#workExperience").append(HTMLworkStart);
+	},
+
+	displayJobEmployeerTitle : function (employer, title) {
+		var formattedJobEmployer = HTMLworkEmployer.replace("%data%", employer);
+		var formattedJobTitle = HTMLworkTitle.replace("%data%", title);
+		$(".work-entry:last").append(formattedJobEmployer + formattedJobTitle);
+	},
+
+	displayJobLocation : function (location) {
+		var formattedJobLocation = HTMLworkLocation.replace("%data%", location);
+		$(".work-entry:last").append(formattedJobLocation);
+	},
+
+	displayJobDates : function (dates) {
+		var formattedJobDates = HTMLworkDates.replace("%data%", dates);
+		$(".work-entry:last").append(formattedJobDates);
+	},
+
+	displayJobDescription : function (description) {
+		var formattedJobDescription = HTMLworkDescription.replace("%data%", description);
+		$(".work-entry:last").append(formattedJobDescription);
+	}
+
 };
 
 var projects =
@@ -71,7 +107,43 @@ var bio = {
         "C#",
         "MVC.Net"
     ],
-    "pictureURL": "http://www.theregularguys.biz/images/Adam.jpg"
+    "pictureURL": "http://www.theregularguys.biz/images/Adam.jpg",
+
+    display : function(bio) {
+		this.displayNameRole(this.name, this.role);
+		this.displayWelcomeMessage(this.welcomeMessage);
+		this.displayContacts(this.contacts);
+		this.displaySkills(this.skills);	
+		this.displayPicture(this.pictureURL);
+	},
+
+	displayNameRole : function(name, role) {
+		$("#main").prepend(HTMLheaderRole.replace("%data%", role));
+		$("#main").prepend(HTMLheaderName.replace("%data%", name));
+	},
+
+	displayWelcomeMessage : function(welcomeMessage) {
+		$("#main").prepend(HTMLWelcomeMsg.replace("%data%", welcomeMessage));
+	},
+
+	displayContacts : function(contacts) {
+		//$("#main").prepend(HTMLWelcomeMsg.replace("%data%", welcomeMessage));
+	},
+
+	displaySkills : function(skills) {
+		if(skills.length > 0) {
+			$("#header").append(HTMLskillsStart);
+
+			for (i = 0; i < skills.length; ++i) {
+				$("#skills").append(HTMLskills.replace("%data%", skills[i]));
+			}
+		}
+	},
+
+	displayPicture : function(pictureURL) {
+		$("#main").prepend(HTMLbioPic.replace("%data%", pictureURL));
+	}
+
 };
 
 var education = {
@@ -93,99 +165,16 @@ var education = {
 	]
 }
 
-displayBio(bio);
-displayWork(work);
-projects.display();
+function populateResume() {
+	$("#mapDiv").append(googleMap);
+	bio.display();
+	work.display();
+	projects.display();
 
-function displayWork(work) {
-	for (job in work.jobs) {
-		displayNewJobSection();
-		displayJobEmployeerTitle(work.jobs[job].employer, work.jobs[job].title);
-		displayJobLocation(work.jobs[job].location);
-		displayJobDates(work.jobs[job].dates);
-		displayJobDescription(work.jobs[job].description);
-	}
+	//*** This is an internationalize button that may be useful in the future
+	//*** 	This button will capitalize the last name of the subject person
+	//*** Uncomment for the button to show up on the very bottom left of the resume
+	//$("#main").append(internationalizeButton);
 }
 
-function displayNewJobSection() {
-	$("#workExperience").append(HTMLworkStart);
-}
-
-function displayJobEmployeerTitle(employer, title) {
-	var formattedJobEmployer = HTMLworkEmployer.replace("%data%", employer);
-	var formattedJobTitle = HTMLworkTitle.replace("%data%", title);
-	$(".work-entry:last").append(formattedJobEmployer + formattedJobTitle);
-}
-
-function displayJobLocation(location) {
-	var formattedJobLocation = HTMLworkLocation.replace("%data%", location);
-	$(".work-entry:last").append(formattedJobLocation);
-}
-
-function displayJobDates(dates) {
-	var formattedJobDates = HTMLworkDates.replace("%data%", dates);
-	$(".work-entry:last").append(formattedJobDates);
-}
-
-function displayJobDescription(description) {
-	var formattedJobDescription = HTMLworkDescription.replace("%data%", description);
-	$(".work-entry:last").append(formattedJobDescription);
-}
-
-$(document).click(function(loc) {
-  // your code goes here
-  var x = loc.pageX;
-  var y = loc.pageY;
-
-  logClicks(x,y);
-});
-
-function displayBio(bio) {
-	displayNameRole(bio.name, bio.role);
-	displayWelcomeMessage(bio.welcomeMessage);
-	displayContacts(bio.contacts);
-	displaySkills(bio.skills);	
-	displayPicture(bio.pictureURL);
-}
-
-function displayNameRole(name, role) {
-	$("#main").prepend(HTMLheaderRole.replace("%data%", role));
-	$("#main").prepend(HTMLheaderName.replace("%data%", name));
-}
-
-function displayWelcomeMessage(welcomeMessage) {
-	$("#main").prepend(HTMLWelcomeMsg.replace("%data%", welcomeMessage));
-
-}
-
-function displayContacts(contacts) {
-	//$("#main").prepend(HTMLWelcomeMsg.replace("%data%", welcomeMessage));
-}
-
-function displaySkills(skills) {
-	if(skills.length > 0) {
-		$("#header").append(HTMLskillsStart);
-
-		for (i = 0; i < skills.length; ++i) {
-			$("#skills").append(HTMLskills.replace("%data%", skills[i]));
-		}
-	}
-
-}
-
-function displayPicture(pictureURL) {
-	$("#main").prepend(HTMLbioPic.replace("%data%", pictureURL));
-}
-
-
-$("#main").append(internationalizeButton);
-
-function inName(name) {
-	var names = name.split(" ");
-	var capsLastName = names.pop().toUpperCase();
-	names.push(capsLastName);
-
-	return names.join(" ");
-}
-
-$("#mapDiv").append(googleMap);
+populateResume();
